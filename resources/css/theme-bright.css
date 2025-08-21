@@ -1,0 +1,32 @@
+/* Bright theme variables */
+:root {
+    --color-primary: #ff6b35; /* warm orange */
+    --color-primary-600: #e65a2c;
+    --color-accent: #ffd166; /* soft yellow */
+    --color-surface: #ffffff; /* bright surface */
+    --color-muted: #6b7280; /* gray-500 */
+    --color-card: #fff7ed; /* very light warm */
+    --color-cta-text: #ffffff;
+}
+
+.btn-primary {
+    @apply inline-block px-6 py-3 rounded-md font-semibold shadow-md text-white;
+    background-color: var(--color-primary);
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-600);
+}
+
+.bg-surface {
+    background-color: var(--color-surface);
+}
+.bg-card {
+    background-color: var(--color-card);
+}
+.text-primary {
+    color: var(--color-primary);
+}
+
+.accent {
+    color: var(--color-accent);
+}
