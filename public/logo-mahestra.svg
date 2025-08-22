@@ -1,0 +1,27 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #f53003;
+      }
+
+      .cls-2 {
+        font-family: MyriadPro-Bold, Myriad Pro;
+        font-size: 56.88px;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        letter-spacing: -.02em;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="250" cy="180" r="80"/>
+  <rect class="cls-1" x="170" y="180" width="160" height="20" rx="10"/>
+  <rect class="cls-1" x="170" y="220" width="120" height="20" rx="10"/>
+  <rect class="cls-1" x="170" y="260" width="80" height="20" rx="10"/>
+  <text class="cls-2" transform="translate(85 350)">
+    <tspan class="cls-3">M</tspan>
+    <tspan x="42.61" y="0">AHESTRA</tspan>
+  </text>
+</svg>

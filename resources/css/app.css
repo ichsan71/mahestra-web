@@ -1,8 +1,11 @@
+/* Theme import - bright palette */
+@import "./theme-bright.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Bright theme variables */
+/* Core theme variables - can be overridden by imported themes */
 :root {
     --color-primary: #ff6b35; /* warm orange */
     --color-primary-600: #e65a2c;
@@ -43,4 +46,20 @@
     --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
+}
+
+.btn-primary {
+    @apply inline-block bg-[#F53003] hover:bg-[#d42a02] text-white px-6 py-3 rounded-lg shadow-md font-semibold transition;
+}
+.btn-secondary {
+    @apply inline-block bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 px-6 py-3 rounded-lg shadow;
+}
+.btn-outline {
+    @apply inline-block border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-md;
+}
+.btn-whatsapp {
+    @apply inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-lg shadow hover:bg-[#1ebc57];
+}
+.nav-link {
+    @apply text-gray-700 hover:text-[#F53003] transition font-medium;
 }
