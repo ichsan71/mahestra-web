@@ -208,52 +208,95 @@
 
         {{-- TESTIMONIALS --}}
         <section class="bg-gray-50 py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-10 text-center">Apa kata pelanggan</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="container mx-auto px-6 text-center">
+                <span
+                    class="inline-block px-3 py-1 text-sm font-medium bg-[#F53003]/10 text-[#F53003] rounded-full mb-3">
+                    Testimoni
+                </span>
+                <h2 class="text-3xl font-bold mb-12">Apa Kata Pelanggan</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @forelse($testimonials as $t)
-                        <figure class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-                            <blockquote class="text-gray-700 italic">“{{ $t->message }}”</blockquote>
-                            <figcaption class="mt-4 font-medium text-gray-900">— {{ $t->name }}</figcaption>
+                        <figure class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition relative">
+                            <blockquote class="text-gray-700 italic mb-4">“{{ $t->message }}”</blockquote>
+                            <figcaption class="font-semibold text-gray-900">— {{ $t->name }}</figcaption>
+                            <div class="flex justify-center mt-3 text-yellow-400">
+                                ★★★★☆
+                            </div>
                         </figure>
                     @empty
-                        <p class="text-gray-600">Belum ada testimoni.</p>
+                        <p class="col-span-full text-gray-600">Belum ada testimoni.</p>
                     @endforelse
                 </div>
             </div>
         </section>
 
+
         {{-- CONTACT --}}
         <section class="container mx-auto px-6 py-20">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 bg-white p-8 rounded-xl shadow">
-                    <h2 class="text-2xl font-semibold mb-4">Hubungi Kami</h2>
+                <div class="md:col-span-2 bg-white p-8 rounded-2xl shadow">
+                    <h2 class="text-2xl font-bold mb-4">Hubungi Kami</h2>
                     <p class="text-gray-600 mb-6">Kami siap membantu kebutuhan cetak dan merchandise Anda.</p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="https://wa.me/{{ optional($contact)->whatsapp ? ltrim($contact->whatsapp, '+') : '' }}"
-                            class="btn-whatsapp">
+                        <a href="https://wa.me/{{ $wa }}"
+                            class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-xl font-medium shadow">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 .5C5.648.5.5 5.647.5 12c0 2.162.57 4.276 1.654 6.129L.5 23.5l5.56-1.618A11.457 11.457 0 0 0 12 23.5c6.353 0 11.5-5.147 11.5-11.5S18.353.5 12 .5z" />
+                            </svg>
                             WhatsApp {{ $contact->whatsapp ?? '-' }}
                         </a>
-                        <a href="https://instagram.com/{{ optional($contact)->instagram ? ltrim($contact->instagram, '@') : '' }}"
-                            target="_blank" class="btn-secondary">
+                        <a href="{{ $contact && $contact->instagram ? 'https://instagram.com/' . ltrim($contact->instagram, '@') : '#' }}"
+                            target="_blank"
+                            class="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white px-5 py-3 rounded-xl font-medium shadow">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2z" />
+                            </svg>
                             Instagram {{ $contact->instagram ?? '-' }}
                         </a>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow">
-                    <h3 class="font-semibold mb-2">Alamat</h3>
+                <div class="bg-gray-50 p-6 rounded-2xl shadow">
+                    <h3 class="font-semibold mb-2 flex items-center gap-2">Alamat</h3>
                     <p class="text-sm text-gray-700">{{ $contact->address ?? '-' }}</p>
                 </div>
             </div>
         </section>
+
     </main>
 
     {{-- FOOTER --}}
-    <footer class="bg-[#F53003] text-white py-8 mt-12">
-        <div class="container mx-auto text-center text-sm">
+    {{-- FOOTER --}}
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-3">Mahestra Printing</h4>
+                <p class="text-sm">Solusi cetak cepat dan berkualitas untuk promosi, event, dan merchandise.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Navigasi</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#products" class="hover:text-white">Produk</a></li>
+                    <li><a href="#contact" class="hover:text-white">Kontak</a></li>
+                    <li><a href="#" class="hover:text-white">Tentang</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Ikuti Kami</h4>
+                <div class="flex gap-4">
+                    <a href="https://wa.me/{{ $wa }}" class="hover:text-white">WhatsApp</a>
+                    <a href="{{ $contact && $contact->instagram ? 'https://instagram.com/' . ltrim($contact->instagram, '@') : '#' }}"
+                        class="hover:text-white">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-500 mt-10">
             © {{ date('Y') }} Mahestra Printing — All Rights Reserved
         </div>
     </footer>
+
 </body>
 
 </html>
