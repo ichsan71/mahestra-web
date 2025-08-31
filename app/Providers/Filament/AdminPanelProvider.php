@@ -26,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('admin-safe')
             ->colors([
                 'primary' => [
                     50 => '#fff7ed',

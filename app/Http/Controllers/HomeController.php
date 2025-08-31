@@ -6,6 +6,7 @@ use App\Models\HeroSection;
 use App\Models\Product;
 use App\Models\Contact;
 use App\Models\Testimonial;
+use App\Models\Subsidiary;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,8 @@ class HomeController extends Controller
         $products = Product::where('is_published', true)->get();
         $contact = Contact::latest()->first();
         $testimonials = Testimonial::where('is_published', true)->get();
+        $subsidiaries = Subsidiary::where('is_published', true)->get();
 
-        return view('landing', compact('hero', 'products', 'contact', 'testimonials'));
+        return view('landing', compact('hero', 'products', 'contact', 'testimonials', 'subsidiaries'));
     }
 }

@@ -11,7 +11,7 @@
             <!-- Company Logo and Header -->
             <div class="text-center mb-16">
                 <div class="flex justify-center items-center gap-4 mb-6">
-                    <img src="{{ asset('logo-mahestra.svg') }}" alt="Mahestra Logo" class="h-16 w-auto">
+                    <img src="{{ asset('logo.svg') }}" alt="Mahestra Logo" class="h-16 w-auto">
                     <div class="text-left">
                         <h1 class="text-3xl font-bold text-slate-900">Mahestra Printing</h1>
                         <p class="text-sm text-slate-600">Professional Printing Services</p>
