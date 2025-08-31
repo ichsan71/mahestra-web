@@ -134,10 +134,10 @@
             @endif
 
             <div class="relative z-10 text-center px-6 max-w-3xl">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
                     {{ $hero->title ?? 'Cetak Cepat, Hasil Berkualitas' }}
                 </h1>
-                <p class="mt-4 text-lg md:text-xl text-gray-100">
+                <p class="mt-4 text-base sm:text-lg md:text-xl text-gray-100">
                     {{ $hero->subtitle ?? 'Solusi cetak cepat dan berkualitas untuk kebutuhan promosi, event, dan merchandise.' }}
                 </p>
                 <div class="mt-8 flex flex-wrap justify-center gap-4">
@@ -164,11 +164,11 @@
                                 class="inline-block px-3 py-1 text-sm font-medium bg-[#F53003]/10 text-[#F53003] rounded-full mb-4">
                                 Tentang Kami
                             </span>
-                            <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                            <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-gray-900 mb-4">
                                 {{ $companyProfile->title }}
                             </h2>
                             @if ($companyProfile->subtitle)
-                                <h3 class="text-lg lg:text-xl font-semibold text-[#F53003] mb-6">
+                                <h3 class="text-base sm:text-lg lg:text-xl font-semibold text-[#F53003] mb-6">
                                     {{ $companyProfile->subtitle }}
                                 </h3>
                             @endif
@@ -225,7 +225,7 @@
                         class="inline-block px-3 py-1 text-sm font-medium bg-[#F53003]/10 text-[#F53003] rounded-full mb-3">
                         Produk
                     </span>
-                    <h2 class="text-3xl font-bold text-gray-900">Produk Kami</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Produk Kami</h2>
                     <p class="text-gray-600 mt-2">Kualitas terjamin, harga kompetitif</p>
                 </div>
 
@@ -271,7 +271,7 @@
                         class="inline-block px-3 py-1 text-sm font-medium bg-[#F53003]/10 text-[#F53003] rounded-full mb-3">
                         Anak Perusahaan
                     </span>
-                    <h2 class="text-3xl font-bold text-gray-900">Subsidiaries Kami</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Subsidiaries Kami</h2>
                     <p class="text-gray-600 mt-2">Jaringan perusahaan yang mendukung layanan kami</p>
                 </div>
 
@@ -383,7 +383,7 @@
                     class="inline-block px-3 py-1 text-sm font-medium bg-[#F53003]/10 text-[#F53003] rounded-full mb-3">
                     Testimoni
                 </span>
-                <h2 class="text-3xl font-bold mb-12">Apa Kata Pelanggan</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-12">Apa Kata Pelanggan</h2>
 
                 @if ($testimonials->count() > 3)
                     {{-- Horizontal Scroll Layout --}}
@@ -444,9 +444,9 @@
 
         {{-- CONTACT --}}
         <section id="contact" class="container mx-auto px-6 py-20">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 bg-white p-8 rounded-2xl shadow">
-                    <h2 class="text-2xl font-bold mb-4">Hubungi Kami</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="sm:col-span-2 md:col-span-2 bg-white p-8 rounded-2xl shadow">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Hubungi Kami</h2>
                     <p class="text-gray-600 mb-6">Kami siap membantu kebutuhan cetak dan merchandise Anda.</p>
                     <div class="flex flex-wrap gap-4">
                         <a href="https://wa.me/{{ $wa }}"
@@ -480,7 +480,7 @@
     {{-- FOOTER --}}
     {{-- FOOTER --}}
     <footer class="bg-gray-900 text-gray-300 py-12 mt-12">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <div>
                 <h4 class="text-white font-bold text-lg mb-3">Mahestra Printing</h4>
                 <p class="text-sm">Solusi cetak cepat dan berkualitas untuk promosi, event, dan merchandise.</p>
@@ -669,6 +669,26 @@
                             '0.5';
                     }
                 });
+
+                // Add swipe support for mobile
+                let startX = 0;
+                let scrollLeftStart = 0;
+
+                subsidiariesContainer.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX;
+                    scrollLeftStart = subsidiariesContainer.scrollLeft;
+                });
+
+                subsidiariesContainer.addEventListener('touchmove', (e) => {
+                    if (!startX) return;
+                    const x = e.touches[0].pageX;
+                    const walk = (startX - x) * 2; // Scroll speed
+                    subsidiariesContainer.scrollLeft = scrollLeftStart + walk;
+                });
+
+                subsidiariesContainer.addEventListener('touchend', () => {
+                    startX = 0;
+                });
             }
 
             // Handle Testimonials scroll
@@ -701,6 +721,26 @@
                         rightButton.style.opacity = scrollLeft < scrollWidth - clientWidth - 10 ? '1' :
                             '0.5';
                     }
+                });
+
+                // Add swipe support for mobile
+                let startX = 0;
+                let scrollLeftStart = 0;
+
+                testimonialsContainer.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX;
+                    scrollLeftStart = testimonialsContainer.scrollLeft;
+                });
+
+                testimonialsContainer.addEventListener('touchmove', (e) => {
+                    if (!startX) return;
+                    const x = e.touches[0].pageX;
+                    const walk = (startX - x) * 2; // Scroll speed
+                    testimonialsContainer.scrollLeft = scrollLeftStart + walk;
+                });
+
+                testimonialsContainer.addEventListener('touchend', () => {
+                    startX = 0;
                 });
             }
         });
