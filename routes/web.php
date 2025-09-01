@@ -26,3 +26,4 @@ Route::post('/login', function (Request $request) {
     ]);
 });
 // test apakah ada di hosting
+//test
