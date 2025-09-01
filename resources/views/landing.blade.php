@@ -46,7 +46,7 @@
                 <img src="{{ asset('logo.svg') }}" alt="Mahestra Logo" class="h-10 w-auto">
                 <div>
                     <div class="text-xl font-bold text-[#F53003]">Mahestra Printing</div>
-                    <span class="text-sm text-gray-600">Professional Printing Services</span>
+                    <span class="text-sm text-gray-600">test Professional Printing Services</span>
                 </div>
             </div>
 
