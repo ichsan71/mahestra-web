@@ -3,27 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyProfileController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/company-profile', [CompanyProfileController::class, 'show'])->name('company-profile');
 
-Route::get('/login', function () {
-    return view('auth.login'); // pastikan ada file resources/views/auth/login.blade.php
-})->name('login');
+// Route untuk login yang lebih proper
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
 
-Route::post('/login', function (Request $request) {
-    $credentials = $request->only('email', 'password');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+});
 
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->intended('/admin-safe'); // arahkan ke dashboard Filament
-    }
-
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-    ]);
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
 });
 // test apakah ada di hosting
 //test
