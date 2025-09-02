@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Add debugging middleware for 403 errors
         $middleware->web(append: [
             \App\Http\Middleware\Debug403Middleware::class,
+            \App\Http\Middleware\HandleCsrfException::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
